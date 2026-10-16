@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Physics II · Quiz</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Source+Serif+4:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--al:44%;--bg:#eef2f6;--gl:#dbe3ed;--card:#fbfcfe;--tx:#14213d;--mu:#5d6b82;--ln:#c4cfdd;--ac:#2447f0;--ok:#0f9d58;--okb:#dff5e8;--no:#e5364b;--nob:#fde4e7;--sf:"Bricolage Grotesque",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;--se:"Source Serif 4",Georgia,"Times New Roman",serif;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--al:72%;--bg:#0b1220;--gl:#162238;--card:#111a2d;--tx:#e8edf8;--mu:#93a1bb;--ln:#26344f;--ac:#7f9cff;--ok:#3ccf86;--okb:#10301f;--no:#ff6b7d;--nob:#3a1620}}
+:root[data-theme="dark"]{--al:72%;--bg:#0b1220;--gl:#162238;--card:#111a2d;--tx:#e8edf8;--mu:#93a1bb;--ln:#26344f;--ac:#7f9cff;--ok:#3ccf86;--okb:#10301f;--no:#ff6b7d;--nob:#3a1620}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background-color:var(--bg);background-image:linear-gradient(var(--gl) 1px,transparent 1px),linear-gradient(90deg,var(--gl) 1px,transparent 1px);background-size:28px 28px;color:var(--tx);font:16px/1.5 var(--sf)}
+main{max-width:920px;margin:0 auto;padding:28px 18px 64px}
+h1{font-size:clamp(2.2rem,7vw,3.4rem);line-height:1;margin:0;font-weight:800;letter-spacing:-.03em}h2{font-size:1.5rem;margin:8px 0 2px;letter-spacing:-.02em}
+button,input{font:inherit;color:inherit}button:focus-visible,input:focus-visible{outline:2px solid var(--ac);outline-offset:2px}
+.mu{color:var(--mu);font-size:.92rem}
+.hd{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap}
+.hero svg,.glyph svg{display:block;width:100%;overflow:visible}
+.hero{margin:14px 0 22px}.hero svg{height:96px}
+.w0{fill:none;stroke:var(--ln);stroke-width:2;stroke-dasharray:3 5;vector-effect:non-scaling-stroke}
+.w1{fill:none;stroke:var(--ac);stroke-width:3;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.sync,.box,.chip{background:var(--card);border:1px solid var(--ln);border-radius:8px}
+.sync{padding:16px 18px;margin-bottom:22px;display:grid;gap:12px}
+.chip{padding:8px 8px 8px 14px;display:flex;align-items:center;gap:12px}
+.tabs{display:flex;gap:4px;border-bottom:1px solid var(--ln)}
+.tabs button{background:none;border:0;border-bottom:2px solid transparent;padding:6px 10px;margin-bottom:-1px;cursor:pointer;color:var(--mu)}
+.tabs button.on{color:var(--tx);border-color:var(--ac);font-weight:700}
+.msg{font-size:.9rem;color:var(--no)}
+input{background:var(--bg);border:1px solid var(--ln);border-radius:6px;padding:10px 12px;min-width:0;flex:1 1 170px}
+.btn{background:var(--ac);color:var(--bg);border:0;border-radius:6px;padding:10px 18px;cursor:pointer;font-weight:700}
+.btn.g{background:transparent;color:var(--tx);border:1px solid var(--ln);font-weight:500}.btn.g:hover{border-color:var(--ac)}
+.btn.d{background:transparent;color:var(--no);border:1px solid var(--no)}.btn:disabled{opacity:.4;cursor:default}
+.row{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}.sync .row{margin:0}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--ln);border-radius:8px;padding:14px 16px 16px;cursor:pointer;text-align:left;display:flex;flex-direction:column;gap:6px}
+.card:hover:not(.off){border-color:var(--ac)}.card.off{opacity:.55;cursor:default}
+.card b{font-size:1.08rem;line-height:1.25;letter-spacing:-.01em}.num{font-size:.85rem;color:var(--ac);font-weight:700}
+.glyph svg{height:34px}.glyph{margin:2px 0 4px}
+.bar{height:6px;background:var(--ln);border-radius:99px;overflow:hidden}.bar i{display:block;height:100%;background:var(--ac)}
+.box{padding:22px;margin-top:16px}
+.q{font:600 1.25rem/1.5 var(--se);margin:14px 0 18px}
+.tag{display:inline-block;font-size:.8rem;padding:2px 10px;border-radius:99px;border:1px solid var(--ln);color:var(--mu)}
+.opt{display:flex;gap:12px;align-items:baseline;width:100%;text-align:left;background:var(--bg);border:1px solid var(--ln);border-radius:6px;padding:12px 14px;margin-bottom:8px;cursor:pointer;font:400 1.05rem/1.45 var(--se)}
+.opt b{font:700 .9rem var(--sf);color:var(--ac);min-width:1.3em}
+.opt:hover:not(:disabled){border-color:var(--ac)}.opt:disabled{cursor:default;color:inherit}
+.opt.ok{background:var(--okb);border-color:var(--ok)}.opt.no{background:var(--nob);border-color:var(--no)}
+.ex{margin-top:14px;padding:12px 16px;border-left:3px solid var(--ac);background:var(--bg);border-radius:0 6px 6px 0;font:400 1rem/1.65 var(--se)}
+.ex b{font-family:var(--sf)}
+.big{font-size:3.4rem;font-weight:800;letter-spacing:-.03em;line-height:1.1}
+.back{color:var(--ac);cursor:pointer;background:none;border:0;padding:0;font-weight:700}
+.lbr{display:flex;align-items:center;gap:12px;padding:8px 10px;border-radius:6px}.lbr:nth-child(odd){background:var(--bg)}
+.lbr.me{outline:2px solid var(--ac)}.lbn{min-width:1.6em;font-weight:800;color:var(--ac)}
+.lbu{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.lbs{font-weight:700}
+.fl{margin:10px 0 0;padding:0;list-style:none;font:400 1.05rem/1.6 var(--se)}.fl li{padding:7px 0 7px 14px;border-left:3px solid var(--ac);margin-bottom:6px;background:var(--bg);border-radius:0 6px 6px 0}
+.mbig{font-size:6rem;font-weight:800;line-height:.8;color:var(--ac);opacity:.18;letter-spacing:-.05em;margin-top:14px}
+.card{border-top:4px solid var(--ac)}
+.foot{margin-top:28px;display:flex;justify-content:flex-end}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+</head>
+<body>
+<main id="app"></main>
+<script>
+// Question format: [type f|t, question, correct answer, [3 wrong answers], explanation]
+const MODS=[
+{id:1,t:"Free harmonic vibrations",qs:[
+['f','Released from maximum displacement at t = 0, the displacement is:','x = A cos ωt',['x = A sin ωt','x = A ωt','x = A e^(−ωt)'],'The general solution is x = A cos(ωt + φ). At t = 0 the body is released from rest at maximum displacement, so x(0) = A. That requires cos φ = 1, so φ = 0 and x = A cos ωt. A sine would give x(0) = 0, which describes a start from the equilibrium position, not from the extreme point. The other options are not oscillations: ωt only grows, and e^(−ωt) only decays.'],
+['f','Relation between period T and angular frequency ω:','T = 2π/ω',['T = ω/2π','T = 2πω','T = 1/(2πω)'],'During one period the phase ωt grows by exactly one full cycle, 2π. So ωT = 2π and T = 2π/ω. Quick check: ω = 2π rad/s gives T = 1 s. The inverted forms have the wrong units: ω/2π is in rad/s, not in seconds.'],
+['f','Relation between ω and frequency f:','ω = 2πf',['ω = f/2π','ω = πf','ω = f²'],'Frequency f counts cycles per second, and every cycle is 2π radians of phase. So the phase changes at 2π·f radians per second, which is ω = 2πf. This is the same as ω = 2π/T because f = 1/T. Example: f = 50 Hz gives ω ≈ 314 rad/s.'],
+['f','Maximum velocity in SHM:','v_max = Aω',['v_max = Aω²','v_max = A/ω','v_max = A²ω'],'Differentiate x = A cos ωt: v = dx/dt = −Aω sin ωt. The sine has maximum absolute value 1, so |v|max = Aω. This happens when the body passes the equilibrium position. Check the units: metres times rad/s gives m/s. Aω² would be an acceleration.'],
+['f','Maximum acceleration in SHM:','a_max = Aω²',['a_max = Aω','a_max = A/ω²','a_max = A²ω'],'Differentiate the velocity: a = dv/dt = −Aω² cos ωt = −ω²x. The cosine has maximum absolute value 1, so |a|max = Aω². It is reached at the turning points, where |x| = A and the restoring force is largest. Units: m·(1/s²) = m/s².'],
+['f','Period of a mass m on a spring of stiffness k:','T = 2π√(m/k)',['T = 2π√(k/m)','T = 2π·m/k','T = √(m/k)/2π'],'Newton second law for the spring force: m·x″ = −kx, so x″ + (k/m)x = 0. Comparing with x″ + ω₀²x = 0 gives ω₀² = k/m. Then T = 2π/ω₀ = 2π√(m/k). A heavier mass makes the period longer and a stiffer spring makes it shorter. The version with k/m inside the root has this backwards.'],
+['f','Period of a simple pendulum of length l:','T = 2π√(l/g)',['T = 2π√(g/l)','T = 2π√(lg)','T = 2π·l/g'],'For small angles the tangential restoring force is mg·sin θ ≈ mgθ, and the displacement along the arc is x = lθ. This gives x″ + (g/l)x = 0, so ω₀ = √(g/l) and T = 2π√(l/g). The mass cancels out, so the period does not depend on it. A longer pendulum swings slower, and stronger gravity makes it faster.'],
+['f','Total mechanical energy of a harmonic oscillator:','E = kA²/2',['E = kA','E = kA²','E = mA/2'],'At the turning point the speed is zero, so all the energy is stored in the spring: E = ½kA². In the absence of friction the total energy stays constant during the whole motion, and it is shared between kinetic and potential parts. Because E is proportional to A², doubling the amplitude makes the energy four times larger.'],
+['f','Potential energy of a spring at displacement x:','U = kx²/2',['U = kx','U = kx²','U = mgx'],'The spring force is F = −kx. The work needed to stretch it from 0 to x is the integral of kx dx, which equals ½kx². That work is stored as potential energy U = kx²/2. The option kx is the force, not the energy, and mgx is gravitational potential energy, which has nothing to do with the spring.'],
+['f','Speed of the oscillator at displacement x:','v = ±ω√(A² − x²)',['v = ±ω(A − x)','v = ±ωA²x','v = ±Aω/x'],'Energy conservation: ½mv² + ½kx² = ½kA². Solve for v: v² = (k/m)(A² − x²) = ω²(A² − x²), so v = ±ω√(A² − x²). Check the limits: at x = 0 we get v = Aω (maximum), at x = ±A we get v = 0 (turning point).'],
+['f','Spring k = 200 N/m, mass m = 2 kg. Angular frequency ω₀ is:','10 rad/s',['100 rad/s','1 rad/s','20 rad/s'],'Use ω₀ = √(k/m) = √(200/2) = √100 = 10 rad/s. A common mistake is to forget the square root and answer 100. The units are rad/s because k/m has units of 1/s².'],
+['f','Period T = 0.5 s. The frequency f is:','2 Hz',['0.5 Hz','4 Hz','π Hz'],'Frequency is the inverse of the period: f = 1/T = 1/0.5 s = 2 Hz. This means two full oscillations every second. The answer 0.5 Hz would come from mixing up T and f.'],
+['f','Pendulum l = 1 m, g ≈ 9.8 m/s². The period is about:','2.0 s',['1.0 s','3.1 s','0.5 s'],'Use T = 2π√(l/g) = 2π·√(1/9.8) = 2π·0.319 ≈ 2.0 s. A pendulum of length 1 m is almost exactly the so called seconds pendulum, whose half period is about 1 s. The answer 1.0 s would come from forgetting the factor 2π.'],
+['f','A = 0.1 m, ω = 20 rad/s. Maximum velocity:','2 m/s',['0.2 m/s','200 m/s','0.005 m/s'],'The maximum speed is v_max = Aω = 0.1 m × 20 rad/s = 2 m/s. The answer 0.2 m/s would come from multiplying by 2 instead of 20, and 200 m/s from mixing up the units of the amplitude.'],
+['f','Damped oscillations: the amplitude follows:','A(t) = A₀e^(−βt)',['A(t) = A₀e^(βt)','A(t) = A₀ − βt','A(t) = A₀/βt'],'With friction proportional to velocity the amplitude decays exponentially: A(t) = A₀e^(−βt), where β is the damping coefficient. The energy is proportional to A², so it decays twice as fast, as e^(−2βt). The form with e^(+βt) would mean growing oscillations, which is physically impossible without an energy source.'],
+['f','Relaxation time τ (amplitude drops by a factor e):','τ = 1/β',['τ = β','τ = 2π/β','τ = β²'],'Relaxation time is the time after which the amplitude falls by a factor e ≈ 2.718, to about 37% of the start. Put t = τ: A₀e^(−βτ) = A₀/e. This requires βτ = 1, so τ = 1/β. Strong damping (large β) means a short relaxation time.'],
+['f','Logarithmic damping decrement:','λ = βT',['λ = β/T','λ = T/β','λ = βω'],'The logarithmic decrement is the natural log of the ratio of two amplitudes separated by one period: λ = ln(A(t)/A(t+T)). Since A(t)/A(t+T) = e^(βT), we get λ = βT. It measures how much the amplitude shrinks during one oscillation.'],
+['f','Quality factor in terms of the decrement:','Q = π/λ',['Q = λ/π','Q = πλ','Q = 2λ'],'The quality factor shows how many oscillations the system makes before it loses its energy. The number of oscillations during the relaxation time is N = τ/T = 1/(βT) = 1/λ, and Q = πN = π/λ. Small damping means a small decrement and a large Q.'],
+['f','Frequency of damped oscillations:','ω = √(ω₀² − β²)',['ω = ω₀ + β','ω = √(ω₀² + β²)','ω = ω₀β'],'Substituting x = A₀e^(−βt)·cos ωt into x″ + 2βx′ + ω₀²x = 0 gives ω² = ω₀² − β². So damping always lowers the frequency a little. If β ≥ ω₀ the motion is no longer oscillatory at all and the body just creeps back to equilibrium (aperiodic motion).'],
+['f','Equation of a damped oscillator:','x″ + 2βx′ + ω₀²x = 0',['x″ + ω₀²x = 0','x″ − 2βx′ + ω₀²x = 0','x′ + ω₀x = 0'],'The forces are the spring force −kx and the friction force −rv. Newton second law gives m·x″ = −kx − rv. Divide by m and put 2β = r/m and ω₀² = k/m: x″ + 2βx′ + ω₀²x = 0. The form with −2βx′ would describe negative damping, where oscillations grow.'],
+['f','Equation of a harmonic oscillator:','x″ + ω₀²x = 0',['x″ − ω₀²x = 0','x′ + ω₀²x = 0','x″ + ω₀x′ = 0'],'From m·x″ = −kx we get x″ + (k/m)x = 0, that is x″ + ω₀²x = 0. Its solutions are sines and cosines. With a minus sign (x″ − ω₀²x = 0) the solutions are exponentials, so there would be no oscillations. The equations with first derivative terms describe damping, not free oscillations.'],
+['f','The mass on a spring is increased 4 times. The period:','doubles',['quadruples','halves','does not change'],'The period is T = 2π√(m/k), so T is proportional to √m. If the mass grows 4 times, the period grows √4 = 2 times. So the period doubles, not quadruples. The square root is the usual trap here.'],
+['t','What defines harmonic oscillations?','Force proportional to displacement and opposite to it',['Constant force','Force proportional to velocity','Force proportional to displacement squared'],'A motion is harmonic when the restoring force is proportional to the displacement and points opposite to it: F = −kx. This leads to the equation x″ + ω²x = 0. A constant force gives uniform acceleration, a force proportional to velocity is friction, and a force proportional to x² gives anharmonic (non harmonic) oscillations.'],
+['t','How does the quantity change in harmonic oscillations?','As a sine or cosine of time',['Linearly','Exponentially','Parabolically'],'Harmonic oscillations are described by a sine or cosine of time, for example x = A cos(ωt + φ). Sine and cosine are the same function shifted by a quarter period. Linear, exponential or parabolic changes are not periodic, so they cannot describe oscillations.'],
+['t','What is the phase of an oscillation?','The argument (ωt + φ)',['The amplitude','The period','The frequency'],'The phase is the whole argument of the cosine, (ωt + φ). It tells the exact state of the oscillator at time t: where the body is and in which direction it moves. Amplitude, period and frequency are parameters of the motion, they do not describe its state at a given moment.'],
+['t','What is the initial phase?','The phase at t = 0',['The phase after one period','The maximum displacement','The frequency at t = 0'],'The initial phase φ is the value of the phase at t = 0. It is not chosen freely, it is set by the initial conditions, the starting position x₀ and starting velocity v₀. For example, starting from maximum displacement gives φ = 0, and starting from equilibrium moving forward gives φ = −π/2.'],
+['t','Where is the speed maximum?','At the equilibrium position',['At the turning points','Everywhere equal','Only at the start'],'The total energy is constant. At the equilibrium position x = 0 the potential energy is zero, so all the energy is kinetic and the speed is maximum: v_max = Aω. At the turning points the body stops for a moment, so the speed is zero there. That is why the speed is not the same everywhere.'],
+['t','Where is the acceleration maximum in magnitude?','At the turning points',['At equilibrium','Halfway between','It is constant'],'The acceleration is a = −ω²x, so its magnitude is largest where |x| is largest, at the turning points. There the restoring force is maximum, and the body changes the direction of motion. At equilibrium the force is zero, so the acceleration there is zero.'],
+['t','Phase of velocity relative to displacement:','Velocity leads by π/2',['Same phase','Opposite phase (π)','Velocity lags by π/2'],'If x = A cos(ωt + φ), then v = −Aω sin(ωt + φ) = Aω cos(ωt + φ + π/2). The velocity phase is larger by π/2, so velocity leads the displacement by a quarter period. For example, the speed is already maximum when the body passes equilibrium, before it reaches the extreme position.'],
+['t','Phase of acceleration relative to displacement:','Opposite phase (shift π)',['Same phase','Shift π/2','Shift π/4'],'Since a = −ω²x, the acceleration is always opposite to the displacement. When x is at maximum, a is at its negative maximum. This is a phase shift of π (half a period), the two curves are mirror images of each other.'],
+['t','Energy at the equilibrium position:','All kinetic',['All potential','Half and half','Zero'],'At equilibrium x = 0, so the spring potential energy ½kx² is zero. The total energy is constant, so all of it is kinetic: E = ½mv_max². This is why the speed is largest at this point.'],
+['t','Energy at the turning points:','All potential',['All kinetic','Half and half','Zero'],'At the turning points the body momentarily stops, v = 0, so the kinetic energy is zero. The total energy is then purely potential: E = ½kA². Then the body moves back, and potential energy turns into kinetic energy again.'],
+['t','Total energy is proportional to:','The square of the amplitude',['The amplitude','The period','The square root of the amplitude'],'The total energy is E = ½kA², so it is proportional to the square of the amplitude. If the amplitude doubles, the energy grows four times. It is not proportional to A itself, and it does not depend on the period for a given k and A.'],
+['t','Does the period of SHM depend on the amplitude?','No',['Yes, it grows','Yes, it shrinks','Only on the phase'],'For a harmonic oscillator T = 2π√(m/k) contains only m and k, there is no amplitude in it. This property is called isochronism. A bigger amplitude means a longer path, but also proportionally larger speeds, so the time of one oscillation stays the same. (For a pendulum this holds only for small angles.)'],
+['t','Lissajous: equal frequencies and identical phases give:','A straight line',['A circle','A figure eight','A spiral'],'If both motions have the same frequency and the same phase, x = A cos ωt and y = B cos ωt, then y = (B/A)·x. This is the equation of a straight line through the origin. Different phases would open the line into an ellipse.'],
+['t','Lissajous: equal amplitudes, phase difference π/2 give:','A circle',['A straight line','A parabola','A figure eight'],'Take x = A cos ωt and y = A cos(ωt − π/2) = A sin ωt. Then x² + y² = A²(cos² + sin²) = A², which is a circle of radius A. If the amplitudes were different, the same phase shift would give an ellipse instead.'],
+['t','What determines a Lissajous figure?','Frequency ratio, amplitudes and phases',['Only amplitudes','Only phases','Only frequencies'],'The shape of a Lissajous figure depends on three things: the ratio of the frequencies, the ratio of the amplitudes and the phase difference. For example, a 1:1 frequency ratio gives a line, an ellipse or a circle, and a 1:2 ratio gives a figure eight. Knowing only one of these is not enough to say the shape.'],
+['t','What is the relaxation time τ?','Time for the amplitude to drop by a factor e',['Time of one oscillation','Time to stop completely','Time for the amplitude to halve'],'The relaxation time τ is the time in which the amplitude of damped oscillations decreases e times (e ≈ 2.718), which gives τ = 1/β. It is not the period, and it is not the time to stop completely, because exponential decay never reaches exactly zero. The time to halve the amplitude is shorter: ln 2/β ≈ 0.69τ.'],
+['t','When does resonance occur in forced oscillations?','Driving frequency close to the natural frequency',['The force is very large','There is no damping','Driving frequency far above natural'],'In forced oscillations the amplitude is largest when the driving frequency is close to the natural frequency of the system. Then the force pushes the body in phase with its velocity and pumps in the maximum energy each cycle. A very large force alone does not cause resonance, and far from the natural frequency the response is small.'],
+['t','How does Q affect the resonance peak?','Higher Q: narrower and taller peak',['Higher Q: wider peak','No effect','Higher Q: no peak'],'A high Q means weak damping. Then the resonance curve becomes narrow (its width is about ω₀/Q) and tall (the amplitude at resonance grows in proportion to Q). This is how a radio receiver can pick one station out of many close ones. A low Q gives a broad, low peak.']
+/*Q1_END*/]},
+{id:2,t:"Waves",qs:[/*Q2_END*/]},
+{id:3,t:"Alternating current (AC)",qs:[/*Q3_END*/]},
+{id:4,t:"Geometric optics",qs:[/*Q4_END*/]},
+{id:5,t:"Interference. Diffraction",qs:[/*Q5_END*/]},
+{id:6,t:"Polarization",qs:[/*Q6_END*/]},
+{id:7,t:"Blackbody radiation. Photoelectric effect. Compton",qs:[/*Q7_END*/]},
+{id:8,t:"Bohr postulates",qs:[/*Q8_END*/]},
+{id:9,t:"De Broglie. Uncertainty. Schrödinger",qs:[/*Q9_END*/]},
+{id:10,t:"Pauli exclusion principle",qs:[/*Q10_END*/]},
+{id:11,t:"Atomic and molecular structure",qs:[/*Q11_END*/]},
+{id:12,t:"Band theory. Semiconductors. p-n junction",qs:[/*Q12_END*/]},
+{id:13,t:"Thomson, Rutherford, nuclear constituents",qs:[/*Q13_END*/]},
+{id:14,t:"Radioactivity",qs:[/*Q14_END*/]},
+{id:15,t:"Energetics of nuclear reactions",qs:[/*Q15_END*/]}
+];
+
+const KEY='physics2-quiz-v1',SB_URL='https://mdghphkpsnydyzwqbadm.supabase.co',SB_KEY='sb_publishable_Ah_o_X668TveDVNis7siiQ_22ZAWor8';
+let S={};try{S=JSON.parse(localStorage.getItem(KEY))||{}}catch(e){S={}}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}};
+const P=id=>S[id]||(S[id]={c:{},best:0,att:0});
+const $=document.getElementById('app');
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]]}return a};
+let V={v:'home'},ask=null,sb=null,user=null,msg='',mode='in',FU='',gen=0;
+
+// Damped wave: solid blue up to fraction f (progress), dotted for the rest
+function wave(f,k,w,h,damp){let a='',b='';const N=140;
+  for(let i=0;i<=N;i++){const x=i/N,y=h/2-Math.sin(x*k*Math.PI*2)*Math.exp(-x*damp)*(h/2-4),p=(x*w).toFixed(1)+','+y.toFixed(1)+' ';if(x<=f)a+=p;if(x>=f-1/N)b+=p}
+  return `<svg viewBox="0 0 ${w} ${h}" preserveAspectRatio="none" aria-hidden="true"><polyline class="w0" points="${b}"/><polyline class="w1" points="${a}"/></svg>`}
+
+// ---- Supabase sync (optional; the site works offline with localStorage) ----
+try{if(window.supabase)sb=window.supabase.createClient(SB_URL,SB_KEY)}catch(e){}
+const PK='user_id,module_id,question_idx',SK='user_id,module_id';
+const cloud=f=>{if(sb&&user)Promise.resolve(f()).then(r=>{msg=r&&r.error?'Sync error':'Synced'}).catch(()=>{msg='Offline'})};
+async function pull(){
+  const g=gen;
+  const [a,b]=await Promise.all([sb.from('progress').select('module_id,question_idx'),sb.from('module_stats').select('module_id,best,attempts')]);
+  if(g!==gen||!user)return;
+  if(a.error||b.error){msg='Sync error';return render()}
+  a.data.forEach(r=>{P(r.module_id).c[r.question_idx]=1});
+  b.data.forEach(r=>{const p=P(r.module_id);p.best=Math.max(p.best,r.best);p.att=Math.max(p.att,r.attempts)});
+  save();
+  const rows=[],st=[];
+  MODS.forEach(m=>{const p=S[m.id];if(!p)return;Object.keys(p.c).forEach(i=>rows.push({module_id:m.id,question_idx:+i}));if(p.att||p.best)st.push({module_id:m.id,best:p.best,attempts:p.att})});
+  if(rows.length)await sb.from('progress').upsert(rows,{onConflict:PK});
+  if(st.length)await sb.from('module_stats').upsert(st,{onConflict:SK});
+  if(g!==gen||!user)return;
+  msg='Synced';render();loadLB();
+}
+// Only react when the account really changes (Supabase re-fires SIGNED_IN on tab focus)
+if(sb)sb.auth.onAuthStateChange((ev,s)=>{
+  const u=s?s.user:null,changed=(u&&u.id)!==(user&&user.id);user=u;
+  if(u){if(changed)setTimeout(pull,0)}
+  else if(ev==='SIGNED_OUT'||changed){gen++;if(ev==='SIGNED_OUT'){S={};save()}msg='';render();loadLB()}
+});
+async function signOut(){
+  gen++;
+  try{await sb.auth.signOut({scope:'local'})}catch(e){}
+  // fallback: drop the stored session even if the library call failed
+  try{Object.keys(localStorage).filter(k=>k.startsWith('sb-')).forEach(k=>localStorage.removeItem(k))}catch(e){}
+  user=null;S={};save();msg='';ask=null;V={v:'home'};render();loadLB();
+}
+
+// Username login: Supabase needs an email, so the username is mapped to a fake one (no mail is ever sent)
+const FAKE='@physicsquiz.app';
+const uname=u=>u&&u.endsWith(FAKE)?u.slice(0,-FAKE.length):u;
+async function auth(){
+  const up=mode==='up';
+  FU=document.getElementById('em').value.trim().toLowerCase();const u=FU,p=document.getElementById('pw').value;
+  if(!/^[a-z0-9_.]{3,20}$/.test(u)){msg='Username: 3-20 characters, only a-z, 0-9, _ and .';return render()}
+  if(p.length<6){msg='Password must be at least 6 characters';return render()}
+  msg='Please wait...';render();
+  const e=u+FAKE;
+  const r=up?await sb.auth.signUp({email:e,password:p}):await sb.auth.signInWithPassword({email:e,password:p});
+  if(r.error){
+    const m=r.error.message;
+    msg=/invalid login/i.test(m)?'Wrong username or password':/already/i.test(m)?'This username is taken':m;
+  }
+  else if(up&&!r.data.session)msg='Account created, but email confirmation is still ON in Supabase. Turn it off (Authentication → Sign In / Providers → Email → Confirm email).';
+  else{msg='';FU=''}
+  render();
+}
+
+function acct(){
+  if(!sb)return '<span class="mu">Offline mode: progress is saved in this browser only.</span>';
+  if(user)return `<div class="chip"><span><b>${esc(uname(user.email))}</b> <span class="mu">· ${esc(msg||'Synced')}</span></span><button class="btn g" data-a="out">Sign out</button></div>`;
+  return '';
+}
+function authPanel(){
+  if(!sb||user)return '';
+  const up=mode==='up';
+  return `<section class="sync"><div><b>Save your progress online</b><div class="mu">Sign in to keep results on every device and join the leaderboard.</div></div>
+  <div class="tabs"><button class="${up?'':'on'}" data-a="mode" data-m="in">Sign in</button><button class="${up?'on':''}" data-a="mode" data-m="up">Create account</button></div>
+  <div class="row"><input id="em" type="text" placeholder="Username" value="${esc(FU)}" autocomplete="username" autocapitalize="none" autocorrect="off" spellcheck="false"><input id="pw" type="password" placeholder="Password (6+ characters)" autocomplete="${up?'new-password':'current-password'}">
+  <button class="btn" data-a="go">${up?'Create account':'Sign in'}</button></div>${msg?`<div class="msg">${esc(msg)}</div>`:''}</section>`;
+}
+
+// ---- Leaderboard (top 10 by mastered questions) ----
+let LB=null;
+async function loadLB(){
+  if(!sb)return;
+  try{const r=await sb.rpc('get_leaderboard');LB=r.error?null:r.data;}catch(e){LB=null}
+  const el=document.getElementById('lb');
+  if(el)el.innerHTML=lbInner();
+}
+function lbInner(){
+  if(!sb||!LB)return '';
+  const me=user?uname(user.email):'';
+  const rows=LB.length?LB.map((r,i)=>`<div class="lbr${r.username===me?' me':''}"><span class="lbn">${i+1}</span><span class="lbu">${esc(r.username)}</span><span class="lbs">${r.score}</span></div>`).join(''):'<div class="mu">No results yet. Be the first!</div>';
+  return `<div class="box"><b>Leaderboard · Top 10</b><div class="mu">Score = questions mastered</div><div style="margin-top:10px">${rows}</div></div>`;
+}
+const lbBox=()=>`<div id="lb">${lbInner()}</div>`;
+
+// ---- Theory sheets: [heading, 'line|line|line'] ----
+const TH={
+1:[['Free oscillations','x″ + ω₀²x = 0|x = A cos(ωt + φ)|ω = 2πf = 2π/T, f = 1/T|Spring: ω₀ = √(k/m), T = 2π√(m/k)|Pendulum: T = 2π√(l/g) (small angles)|Period does not depend on amplitude (isochronism)'],
+ ['Velocity, acceleration, energy','v = −Aω sin(ωt + φ), v_max = Aω (at equilibrium)|a = −ω²x, a_max = Aω² (at turning points)|Velocity leads displacement by π/2; acceleration is opposite to x|E = kA²/2 = mv²/2 + kx²/2, U = kx²/2|v = ±ω√(A² − x²)'],
+ ['Damped oscillations','x″ + 2βx′ + ω₀²x = 0|A(t) = A₀e^(−βt), ω = √(ω₀² − β²)|Relaxation time τ = 1/β|Log decrement λ = βT, quality factor Q = π/λ'],
+ ['Resonance and Lissajous','Resonance: driving frequency ≈ natural frequency|Higher Q: narrower and taller peak|Lissajous: same frequency and phase → line; equal amplitudes, phase π/2 → circle']],
+2:[['Travelling waves','ξ = A cos(ωt − kx + φ)|v = λf = ω/k, k = 2π/λ|Wave equation: ∂²ξ/∂t² = v²·∂²ξ/∂x²|Intensity I ∝ A²'],
+ ['Speed and standing waves','String: v = √(T/μ)|Gas: v = √(γRT/M)|Standing wave: nodes and antinodes, spacing λ/2|Doppler: f′ = f·(v ± v_obs)/(v ∓ v_src)']],
+3:[['Circuit elements','i = I₀ cos ωt, effective values I = I₀/√2, U = U₀/√2|X_L = ωL, X_C = 1/(ωC)|Z = √(R² + (X_L − X_C)²), tan φ = (X_L − X_C)/R'],
+ ['Resonance and power','Series resonance: ω₀ = 1/√(LC), Q = ω₀L/R|Thomson: T = 2π√(LC)|Average power P = UI cos φ']],
+4:[['Refraction','n = c/v|Snell: n₁ sin θ₁ = n₂ sin θ₂|Total internal reflection: sin θc = n₂/n₁ (n₁ > n₂)'],
+ ['Mirrors and lenses','Lens: 1/s + 1/s′ = 1/f, 1/f = (n − 1)(1/R₁ − 1/R₂)|Mirror: 1/s + 1/s′ = 2/R|Magnification m = −s′/s|Optical power D = 1/f (dioptres)']],
+5:[['Interference','Maximum: Δ = mλ, minimum: Δ = (m + ½)λ|Young: Δy = λL/d|Thin film: reflection from a denser medium adds λ/2|Sources must be coherent'],
+ ['Diffraction','Grating: d sin θ = mλ|Single slit minima: a sin θ = mλ|Resolution limit: θ ≈ 1.22 λ/D']],
+6:[['Polarization','Malus: I = I₀ cos²θ|Natural light through an ideal polarizer: I = I₀/2|Brewster: tan θB = n₂/n₁|At θB reflected ray is polarized and perpendicular to the refracted ray|Birefringence: ordinary and extraordinary rays']],
+7:[['Blackbody','Planck: E = hf|Wien: λmax·T = b ≈ 2.9·10⁻³ m·K|Stefan–Boltzmann: R = σT⁴'],
+ ['Photons','Photoelectric: hf = A + mv²/2, eU_stop = K_max|Red limit f₀ = A/h|Photon momentum p = h/λ|Compton: Δλ = (h/mc)(1 − cos θ), h/mc ≈ 2.43 pm']],
+8:[['Bohr model','Quantization: mvr = nħ|Radiation: hf = E_n − E_m|E_n = −13.6 eV/n², r_n = n²a₀, a₀ ≈ 0.529 Å|Spectrum: 1/λ = R(1/n² − 1/m²), R ≈ 1.097·10⁷ m⁻¹']],
+9:[['Wave properties of matter','de Broglie: λ = h/p|Uncertainty: Δx·Δp ≥ ħ/2, ΔE·Δt ≥ ħ/2'],
+ ['Schrödinger equation','iħ ∂ψ/∂t = Ĥψ|Stationary: −(ħ²/2m)ψ″ + Uψ = EψProbability density = ψ*ψ, normalization ∫ψ*ψ dV = 1|Infinite well: E_n = n²π²ħ²/(2mL²)']],
+10:[['Pauli principle','Two identical fermions cannot share all quantum numbers (n, l, m_l, m_s)|Shell holds 2n² electrons, subshell holds 2(2l + 1)|Bosons are not restricted|Explains the structure of the periodic table']],
+11:[['Atoms','n = 1, 2, …; l = 0 … n − 1; m_l = −l … +l; m_s = ±½|Subshells: s, p, d, f for l = 0, 1, 2, 3'],
+ ['Molecules','E = E_el + E_vib + E_rot, with E_el ≫ E_vib ≫ E_rot|Vibration: E = ħω(v + ½)|Rotation: E = ħ²J(J + 1)/(2I)|Bonds: ionic and covalent']],
+12:[['Bands','Metal: bands overlap or partly filled; insulator: large gap; semiconductor: small gap (≲ 3 eV)|Fermi–Dirac: f(E) = 1/(e^((E − μ)/kT) + 1)|Semiconductor resistance falls as T rises'],
+ ['Doping and p-n junction','n-type: donors (extra electrons), p-type: acceptors (holes)|Junction: depletion layer and built-in field|Forward bias: barrier lowers, current grows exponentially|Reverse bias: small saturation current']],
+13:[['Early models','Thomson: plum pudding model|Rutherford: α-scattering showed a small dense nucleus (~10⁻¹⁵ m)|Rutherford formula: dN ∝ 1/sin⁴(θ/2)'],
+ ['Nucleus','A = Z + N; isotopes have the same Z|R = R₀·A^(1/3), R₀ ≈ 1.2 fm|Nucleons are held by the short-range strong force']],
+14:[['Decay law','N = N₀e^(−λt), A = λN|T½ = ln 2/λ ≈ 0.693/λ, mean lifetime τ = 1/λ'],
+ ['Decay types','α: Z − 2, A − 4 (helium nucleus)|β⁻: n → p + e⁻ + ν̄, Z + 1|β⁺: p → n + e⁺ + ν, Z − 1|γ: photon from an excited nucleus']],
+15:[['Binding energy','Mass defect Δm = Zm_p + Nm_n − M|E_b = Δm·c², 1 u = 931.5 MeV|Binding energy per nucleon peaks near iron, about 8.8 MeV'],
+ ['Reactions','Q = (Σm_in − Σm_out)c²; Q > 0 releases energy|Fission of heavy and fusion of light nuclei both release energy|Conserved: charge, baryon number, energy, momentum']]
+};
+const acc=id=>`--ac:hsl(${(id*24+215)%360} 80% var(--al))`;
+function theory(){
+  const m=MODS[V.id-1],t=TH[m.id]||[];$.style.cssText=acc(m.id);
+  $.innerHTML=`<button class="back" data-a="open" data-id="${m.id}">← Module ${m.id}</button>
+  <h2>${esc(m.t)}</h2><div class="mu">Theory sheet</div>`+
+  t.map(s=>`<div class="box"><b>${esc(s[0])}</b><ul class="fl">${s[1].split('|').map(l=>`<li>${esc(l)}</li>`).join('')}</ul></div>`).join('')+
+  `<div class="row"><button class="btn" data-a="open" data-id="${m.id}">Back to module</button></div>`;
+}
+function render(){if(V.v==='home')home();else if(V.v==='mod')modPage();else if(V.v==='th')theory()}
+
+function home(){
+  $.style.cssText='';
+  const tot=MODS.reduce((n,m)=>n+m.qs.length,0),done=MODS.reduce((n,m)=>n+Object.keys(P(m.id).c).length,0);
+  $.innerHTML=`<div class="hd"><div><h1>Physics II</h1><div class="mu" style="margin-top:8px">${done} of ${tot} questions mastered</div></div>${acct()}</div>
+  <div class="hero">${wave(tot?done/tot:0,6,900,96,1.1)}</div>${authPanel()}<div class="grid">`+
+  MODS.map(m=>{const n=m.qs.length,c=Object.keys(P(m.id).c).length;
+  return `<button class="card" style="${acc(m.id)}" data-a="open" data-id="${m.id}"><span class="num">Module ${m.id}</span><div class="glyph">${wave(n?c/n:0,1.5+(m.id%5)*.5,200,34,.8)}</div><b>${esc(m.t)}</b>
+  ${n?`<span class="mu">${c}/${n} mastered · best ${P(m.id).best}% · attempts ${P(m.id).att}</span>`:'<span class="mu">Theory sheet · questions coming soon</span>'}</button>`}).join('')+'</div>'+lbBox()+
+  `<div class="foot"><button class="btn ${ask==='all'?'d':'g'}" data-a="resetall">${ask==='all'?'Really reset everything?':'Reset all progress'}</button></div>`;
+}
+
+function modPage(){
+  const m=MODS[V.id-1],p=P(m.id),n=m.qs.length,c=Object.keys(p.c).length,wrong=n-c;
+  $.style.cssText=acc(m.id);
+  $.innerHTML=`<button class="back" data-a="home">← All modules</button>
+  <div class="mbig">${String(m.id).padStart(2,'0')}</div><h2>Module ${m.id}. ${esc(m.t)}</h2><div class="mu">${c}/${n} mastered · best ${p.best}% · attempts ${p.att}</div>
+  <div class="hero" style="margin-bottom:8px">${wave(n?c/n:0,1.5+(m.id%5)*.5,900,80,.8)}</div>
+  <div class="row" style="margin-top:0"><button class="btn g" data-a="theory">Theory sheet</button><button class="btn" data-a="start" data-mode="all" ${n?'':'disabled'}>All ${n} questions</button>
+  <button class="btn g" data-a="start" data-mode="wrong" ${wrong?'':'disabled'}>Not mastered (${wrong})</button>
+  <button class="btn g" data-a="start" data-mode="f" ${n?'':'disabled'}>Formulas</button><button class="btn g" data-a="start" data-mode="t" ${n?'':'disabled'}>Theory</button></div>${n?'':'<div class="mu" style="margin-top:12px">Questions for this module are coming soon. The theory sheet is available now.</div>'}
+  <div class="row"><button class="btn ${ask==='m'?'d':'g'}" data-a="resetmod">${ask==='m'?'Really reset this module?':'Reset module progress'}</button></div>`;
+}
+
+function start(mode){
+  const m=MODS[V.id-1],p=P(m.id);
+  let list=m.qs.map((q,i)=>({i,q}));
+  if(mode==='wrong')list=list.filter(x=>!p.c[x.i]);
+  if(mode==='f'||mode==='t')list=list.filter(x=>x.q[0]===mode);
+  V={v:'quiz',id:m.id,list:shuffle(list),k:0,ok:0,sel:null,opts:null};
+  prep();quiz();
+}
+function prep(){V.opts=shuffle([V.list[V.k].q[2],...V.list[V.k].q[3]]);V.sel=null}
+
+function quiz(){
+  $.style.cssText=acc(V.id);
+  const x=V.list[V.k],q=x.q,n=V.list.length,done=V.sel!==null;
+  $.innerHTML=`<div class="hd" style="align-items:center"><button class="back" data-a="open" data-id="${V.id}">← Exit</button><span class="mu">${V.k+1} / ${n} · correct ${V.ok}</span></div>
+  <div class="bar" style="margin-top:12px"><i style="width:${V.k/n*100}%"></i></div>
+  <div class="box" style="margin-top:14px"><span class="tag">${q[0]==='f'?'Formula':'Theory'}</span><div class="q">${esc(q[1])}</div>`+
+  V.opts.map((o,i)=>{let cl='';if(done){if(o===q[2])cl='ok';else if(i===V.sel)cl='no'}
+  return `<button class="opt ${cl}" data-a="pick" data-i="${i}" ${done?'disabled':''}><b>${'ABCD'[i]}</b><span>${esc(o)}</span></button>`}).join('')+
+  (done?`<div class="ex"><b>${V.opts[V.sel]===q[2]?'Correct.':'Incorrect.'}</b> ${esc(q[4])}</div>
+  <div class="row"><button class="btn" data-a="next">${V.k+1<n?'Next':'Results'}</button></div>`:'<div class="mu" style="margin-top:6px">Keys 1–4 to answer</div>')+'</div>';
+}
+
+function pick(i){
+  if(V.sel!==null)return;
+  const x=V.list[V.k],p=P(V.id),r=V.opts[i]===x.q[2];
+  V.sel=i;
+  if(r){V.ok++;p.c[x.i]=1;cloud(()=>sb.from('progress').upsert({module_id:V.id,question_idx:x.i},{onConflict:PK}))}
+  else{delete p.c[x.i];cloud(()=>sb.from('progress').delete().eq('module_id',V.id).eq('question_idx',x.i))}
+  save();quiz();
+}
+function next(){
+  if(V.k+1<V.list.length){V.k++;prep();quiz();return}
+  const p=P(V.id),n=V.list.length,pc=Math.round(V.ok/n*100);
+  p.att++;p.best=Math.max(p.best,pc);save();
+  cloud(()=>sb.from('module_stats').upsert({module_id:V.id,best:p.best,attempts:p.att},{onConflict:SK}));
+  $.innerHTML=`<div class="box" style="text-align:center"><div class="mu">Module ${V.id}</div><div class="big">${V.ok} / ${n}</div><div class="mu">${pc}%</div>
+  <div class="hero" style="margin:12px 0">${wave(pc/100,3,600,70,.9)}</div>
+  <div class="row" style="justify-content:center"><button class="btn" data-a="open" data-id="${V.id}">Back to module</button>
+  <button class="btn g" data-a="start" data-mode="wrong" ${Object.keys(p.c).length<MODS[V.id-1].qs.length?'':'disabled'}>Retry not mastered</button></div></div>`;
+}
+
+$.addEventListener('click',e=>{
+  const b=e.target.closest('[data-a]');if(!b)return;const a=b.dataset.a;
+  if(a==='home'){ask=null;V={v:'home'};home();loadLB()}
+  else if(a==='open'){ask=null;V={v:'mod',id:+b.dataset.id};modPage()}
+  else if(a==='start')start(b.dataset.mode);
+  else if(a==='pick')pick(+b.dataset.i);
+  else if(a==='next')next();
+  else if(a==='theory'){V={v:'th',id:V.id};theory()}
+  else if(a==='mode'){mode=b.dataset.m;msg='';render()}
+  else if(a==='go')auth();
+  else if(a==='out')signOut();
+  else if(a==='resetall'){if(ask==='all'){S={};save();ask=null;cloud(()=>Promise.all([sb.from('progress').delete().gte('module_id',1),sb.from('module_stats').delete().gte('module_id',1)]))}else ask='all';home()}
+  else if(a==='resetmod'){if(ask==='m'){delete S[V.id];save();ask=null;cloud(()=>Promise.all([sb.from('progress').delete().eq('module_id',V.id),sb.from('module_stats').delete().eq('module_id',V.id)]))}else ask='m';modPage()}
+});
+document.addEventListener('keydown',e=>{
+  if(e.key==='Enter'&&(e.target.id==='em'||e.target.id==='pw')){e.preventDefault();auth();return}
+  if(V.v!=='quiz')return;
+  if('1234'.includes(e.key)&&V.opts&&V.opts[+e.key-1]!==undefined)pick(+e.key-1);
+  else if((e.key==='Enter'||e.key===' ')&&V.sel!==null){e.preventDefault();next()}
+});
+home();loadLB();
+</script>
+</body>
+</html>
